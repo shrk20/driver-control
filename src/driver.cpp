@@ -11,6 +11,7 @@
 bool intakeR = false;
 bool intakeF = false;
 
+// Sets the intake to turn on and off when triggered
 void intake(){
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
         intakeF = !intakeF;
@@ -31,9 +32,10 @@ void intake(){
         }
     }    
 }
-
+// Setting the mogo mechanism to start off
 bool pneumatics_clamp = false; 
 
+// Sets the pneumatics to turn on and off
 void clamp(){
      if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
      {
