@@ -40,7 +40,7 @@ void clamp(){
      if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
      {
         pneumatics_clamp = !pneumatics_clamp;
-        clamp_1.set_value(pneumatics_clamp);
+        clamp_1.set_value(pneumatics_clamp); 
         clamp_2.set_value(pneumatics_clamp);
         pros::delay(20);
     }
