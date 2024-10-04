@@ -1,6 +1,4 @@
 #include "main.h"
-#include "driver.cpp"
-#include "globals.cpp"
 #include "driver.hpp"
 #include "globals.hpp"
 
@@ -90,8 +88,6 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);  // Prints status of the emulated screen LCDs
 
 		// Arcade control scheme
-		drive();
-		intake();
-		clamp();                             // Run for 20 ms then update
+		drive();                      // Run for 20 ms then update
 	}
 }

@@ -8,7 +8,7 @@ extern pros::Controller master;
 // Initialize the  motor groups
 extern pros::MotorGroup left_motors;
 extern pros::MotorGroup right_motors;
-extern pros::MotorGroup intake_motor;
+extern pros::MotorGroup intake_motors;
 
 // Intialize horizontal and vertical encoders
 extern pros::adi::Encoder vertical_encoder;
@@ -30,8 +30,8 @@ extern lemlib::OdomSensors sensors;
 extern lemlib::Chassis chassis;
 
 //pneumatics and inertial sensors
-extern pros::ADIDigitalOut clamp_1;
-extern pros::ADIDigitalOut clamp_2;
+extern pros::adi::Pneumatics clamp1;
+extern pros::adi::Pneumatics clamp2;
 extern pros::Imu imu;
 
 

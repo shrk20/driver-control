@@ -1,8 +1,7 @@
+#include "globals.hpp"
+#include "main.h"
+#include "lemlib/api.hpp"
+
 void intake();
 void clamp();
 void drive();
-bool intakeR;
-bool intakeF;
-bool pneumatics_clamp;
-int dir;
-int turn;

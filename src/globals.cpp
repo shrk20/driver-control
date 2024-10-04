@@ -1,17 +1,22 @@
 #include "lemlib/api.hpp"
 #include "main.h"
-#include "drive.hpp"
 #include "lemlib/chassis/chassis.hpp"
 
 //Initialize controller + driver and intake motors
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::MotorGroup left_motors({1, 2, 3}, pros::MotorGearset::blue);
-pros::MotorGroup right_motors({4, 5, 6}, pros::MotorGearset::blue);
+pros::MotorGroup left_motors({-1, -2, -3}, pros::MotorGearset::blue);
+pros::MotorGroup right_motors({21, 19, 13}, pros::MotorGearset::blue);
 pros::MotorGroup intake_motors({7}, pros::MotorGearset::blue);
-
+  
 // vertical and horizontal tracking wheel encoder
 pros::adi::Encoder vertical_encoder('C', 'D', true);
 pros::Rotation horizontal_encoder(20);
+pros::Imu imu(10);
+
+// Create the pneumatics clamps
+pros::adi::Pneumatics clamp1('A', false);
+pros::adi::Pneumatics clamp2('B', false);
+
 
 // Create Tracking wheels
 lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_encoder, lemlib::Omniwheel::NEW_275, -5.75);
@@ -35,7 +40,7 @@ lemlib::ControllerSettings lateral_controller(10, // proportional gain (kP)
                                               100, // small error range timeout, in milliseconds
                                               3, // large error range, in inches
                                               500, // large error range timeout, in milliseconds
-                                              20 // maximum acceleration (slew)
+                                              20  // maximum acceleration (slew)
 );
 
 lemlib::ControllerSettings angular_controller(2, // proportional gain (kP)
@@ -62,12 +67,3 @@ lemlib::Chassis chassis(drivetrain, // drivetrain setting
                         );
 
 
-// Create the penumatics and inertial sensor
-pros::ADIDigitalOut clamp_1('A');
-pros::ADIDigitalOut clamp_2('B');
-
-pros::Imu imu(10);
-
-// Create the controller
-
-pros::Controller master(pros::E_CONTROLLER_MASTER);
